@@ -1,7 +1,5 @@
 package com.syahid.test.blog.services;
 
-import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -9,23 +7,16 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.domain.Sort.Order;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.syahid.test.blog.dto.ArticleDto;
-import com.syahid.test.blog.dto.ArticlePaginationDto;
-import com.syahid.test.blog.dto.ResponseDto;
 import com.syahid.test.blog.exceptions.AnException;
 import com.syahid.test.blog.models.Article;
 import com.syahid.test.blog.repositories.ArticleRepository;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
 
 @Service
 public class ArticleService {
