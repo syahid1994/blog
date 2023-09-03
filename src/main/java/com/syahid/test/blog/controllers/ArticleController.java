@@ -21,14 +21,26 @@ import com.syahid.test.blog.exceptions.AnException;
 import com.syahid.test.blog.models.Article;
 import com.syahid.test.blog.services.ArticleService;
 
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.security.SecurityRequirements;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
+
 @RestController
 @RequestMapping("/article")
+@SecurityScheme(
+	    name = "bearerAuth",
+	    type = SecuritySchemeType.HTTP,
+	    bearerFormat = "JWT",
+	    scheme = "bearer"
+	)
 public class ArticleController {
 	
 	@Autowired
 	ArticleService articleService;
 
 	@PostMapping
+	@SecurityRequirements(value = {@SecurityRequirement(name = "bearerAuth")})
 	public ResponseDto<Object> create(@RequestBody ArticleDto param) throws AnException {
 		articleService.create(param);
 		return ResponseDto.success();
@@ -36,6 +48,7 @@ public class ArticleController {
 	
 	//get mapping unsupported dto
 	@GetMapping
+	@SecurityRequirements(value = {@SecurityRequirement(name = "bearerAuth")})
 	public ResponsePaginationDto<List<Article>> getList(@RequestParam(required = false, defaultValue = "")String title, 
 			@RequestParam(required = false, defaultValue = "createdAt")String sortBy, 
 			@RequestParam(required = false, defaultValue = "desc")String sortType,
@@ -46,12 +59,14 @@ public class ArticleController {
 	}
 	
 	@GetMapping("/{id}")
+	@SecurityRequirements(value = {@SecurityRequirement(name = "bearerAuth")})
 	public ResponseDto<Article> getById(@PathVariable("id") int id) {
 		long idl = id;
 		return ResponseDto.success(articleService.getById(idl));
 	}
 	
 	@PutMapping("/{id}")
+	@SecurityRequirements(value = {@SecurityRequirement(name = "bearerAuth")})
 	public ResponseDto<Object> update(@PathVariable("id") int id, @RequestBody ArticleDto param) throws AnException {
 		long idl = id;
 		articleService.update(idl, param);
@@ -59,6 +74,7 @@ public class ArticleController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@SecurityRequirements(value = {@SecurityRequirement(name = "bearerAuth")})
 	public ResponseDto<Object> delete(@PathVariable("id") int id) throws AnException {
 		long idl = id;
 		articleService.delete(idl);
