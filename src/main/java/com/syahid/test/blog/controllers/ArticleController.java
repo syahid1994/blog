@@ -1,12 +1,9 @@
 package com.syahid.test.blog.controllers;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,15 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.syahid.test.blog.dto.ArticleDto;
-import com.syahid.test.blog.dto.ArticlePaginationDto;
 import com.syahid.test.blog.dto.ResponseDto;
 import com.syahid.test.blog.dto.ResponsePaginationDto;
 import com.syahid.test.blog.exceptions.AnException;
 import com.syahid.test.blog.models.Article;
 import com.syahid.test.blog.services.ArticleService;
-
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 
 @RestController
 @RequestMapping("/article")

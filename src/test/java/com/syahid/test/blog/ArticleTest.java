@@ -44,7 +44,7 @@ public class ArticleTest {
 	}
 	
 	@Test
-	@Order(2)
+	@Order(3)
 	public void getDetail() {
 		Long id = 1l;
 		Article article = articleRepository.findById(id).orElse(null);
@@ -52,15 +52,10 @@ public class ArticleTest {
 	}
 	
 	@Test
-	@Order(3)
+	@Order(4)
 	public void update() {
 		Long id = 1l;
 		Article article = articleRepository.findById(id).orElse(null);
-
-		Assertions.assertTrue(article != null);
-		if (article == null) {
-			return;
-		}
 		String titleEdit = "title edit";
 		article.setTitle(titleEdit);
 		Article articleEdit = articleRepository.save(article);
@@ -69,16 +64,11 @@ public class ArticleTest {
 	}
 	
 	@Test
-	@Order(4)
+	@Order(5)
 	public void delete() {
 		long count = articleRepository.count();
 		Long id = 1l;
 		Article article = articleRepository.findById(id).orElse(null);
-
-		Assertions.assertTrue(article != null);
-		if (article == null) {
-			return;
-		}
 		articleRepository.delete(article);
 
 		long recount = articleRepository.count();
