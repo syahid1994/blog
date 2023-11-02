@@ -2,6 +2,7 @@ version: '3.8'
 services:
   blog-syahid:
     container_name: blog-syahid
+    image: blog-syahid
     build:
       context: .
     ports:
