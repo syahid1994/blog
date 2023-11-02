@@ -47,10 +47,11 @@ public class WebSecurityConfig {
 		.authorizeHttpRequests(
 				(authorizeHttpRequests) ->
 				authorizeHttpRequests
-				.requestMatchers(new AntPathRequestMatcher("/swagger-ui/**")).permitAll()
+				/*.requestMatchers(new AntPathRequestMatcher("/swagger-ui/**")).permitAll()
 				.requestMatchers(new AntPathRequestMatcher("/v3/api-docs/**")).permitAll()
 				.requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll()
-				.anyRequest().authenticated()
+				.anyRequest().authenticated()*/
+				.anyRequest().permitAll()
 				);
 		http.authenticationProvider(authenticationProvider());
 		http.addFilterBefore(authorizationFilter(), UsernamePasswordAuthenticationFilter.class);

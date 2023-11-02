@@ -40,6 +40,9 @@ public class ArticleService {
 		article.setBody(param.getBody());
 		article.setAuthor(param.getAuthor());
 		articleRepository.save(article);
+		
+		articleRepository.updateBodyByTitle(param.getTitle(), param.getTitle());
+		articleRepository.updateBodyByTitle(param.getTitle());
 	}
 	
 	public Page<Article> getList(String title, String sortBy, String sortType, Integer page, Integer limit) {
